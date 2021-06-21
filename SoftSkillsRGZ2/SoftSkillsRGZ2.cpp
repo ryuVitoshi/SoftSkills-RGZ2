@@ -4,6 +4,7 @@
 #include "windows.h"
 using namespace std;
 
+// додаткова функція для роботи вдвох
 void func(char** str, int n) {
 	int** matrix = new int* [n];
 
@@ -36,7 +37,7 @@ void func(char** str, int n) {
 	delete[] matrix;
 }
 
-int main () {
+int main() {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
@@ -100,4 +101,3 @@ int main () {
 	system("pause");
 	return 0;
 }
-

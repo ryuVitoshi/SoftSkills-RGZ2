@@ -13,7 +13,7 @@ bool reduce(char** str, int n, int size, int i) {
 	if (size == 3) c = 2;
 	else if (size == 2) c = 1;
 	for (; c > 0; c--) {
-		for (int pos = 0; pos <= size - c; pos++) {
+		for (int pos = 1; pos <= size - c - 2; pos++) {
 			strcpy(tmp, str[i]);
 			reduceString(str[i], size, pos, c);
 			unique = true;
