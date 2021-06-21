@@ -1,8 +1,30 @@
 ﻿#include <iostream>
-//#include "Vlad.h"
+#include "Vlad.h"
 #include "Viktor.h"
 #include "windows.h"
 using namespace std;
+
+void func(char** str, int n) {
+	int** matrix = new int* [n];
+
+	for (int i = 0; i < n; i++)
+		matrix[i] = new int[n];
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			//
+		}
+	}
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			cout << matrix[i][j] << ' ';
+		}
+		cout << endl;
+		delete[] matrix[i];
+	}
+	delete[] matrix;
+}
 
 int main () {
 	SetConsoleCP(1251);
@@ -23,7 +45,7 @@ int main () {
 	}
 
 	// перевірка рядків на унікальність
-	//compare(strings, n);
+	compare(strings, n);
 
 	// ввід довжини рядків
 	int outSize;

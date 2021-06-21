@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string.h>
-//#include "Vlad.h"
+#include "Vlad.h"
 
 bool reduce(char** str, int n, int size, int i) {
 	if (i == n) return true;
@@ -15,7 +15,7 @@ bool reduce(char** str, int n, int size, int i) {
 	for (; c > 0; c--) {
 		for (int pos = 0; pos <= size - c; pos++) {
 			strcpy(tmp, str[i]);
-			//reduceString(str[i], size, pos, c);
+			reduceString(str[i], size, pos, c);
 			unique = true;
 
 			for (int j = 0; j < i; j++) {
@@ -39,5 +39,6 @@ bool reduce(char** str, int n, int size, int i) {
 			}
 		}
 	}
+	delete[] tmp;
 	return false;
 }
