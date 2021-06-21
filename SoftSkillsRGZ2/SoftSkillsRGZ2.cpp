@@ -12,7 +12,17 @@ void func(char** str, int n) {
 
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
-			//
+			if (i == j) {
+				matrix[i][i] = 0;
+				continue;
+			}
+			for (int k = 0; str[i][k] != '\0' || str[j][k] != '\0'; k++) {
+				if (str[i][k] != str[j][k]) {
+					matrix[i][j] = k;
+					matrix[j][i] = k;
+					break;
+				}
+			}
 		}
 	}
 
