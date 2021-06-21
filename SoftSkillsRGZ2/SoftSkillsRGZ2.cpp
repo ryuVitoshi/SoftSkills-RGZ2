@@ -30,45 +30,64 @@ int main () {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	// ввід кількості рядків
 	int n;
-	cout << "Введіть кількість рядків:\n-> ";
-	cin >> n;
+	char** strings = NULL;
 
-	// ввід даних
-	char** strings = new char* [n];
-	cin.ignore();
-	for (int i = 0; i < n; i++) {
-		strings[i] = new char[256];
-		cout << i + 1 << ". ";
-		cin.getline(strings[i], 255);
-	}
+	try {
+		// ввід кількості рядків
+		cout << "Введіть кількість рядків:\n-> ";
+		cin >> n;
+		if (n < 1) throw 1;
 
-	// перевірка рядків на унікальність
-	compare(strings, n);
-
-	// ввід довжини рядків
-	int outSize;
-	cout << "Введіть довжину рядків:\n-> ";
-	cin >> outSize;
-
-	// скорочення рядків
-	bool reduction = reduce(strings, n, outSize, 0);
-
-	// вивід даних
-	if (reduction) {
+		// ввід даних
+		strings = new char* [n];
+		cin.ignore();
 		for (int i = 0; i < n; i++) {
-			cout << i + 1 << ". " << strings[i] << endl;
+			strings[i] = new char[256];
+			cout << i + 1 << ". ";
+			cin.getline(strings[i], 255);
 		}
+
+		// перевірка рядків на унікальність
+		compare(strings, n);
+
+		// ввід довжини рядків
+		int outSize;
+		cout << "Введіть довжину рядків:\n-> ";
+		cin >> outSize;
+		if (outSize < 2) throw 2;
+
+		// скорочення рядків
+		bool reduction = reduce(strings, n, outSize, 0);
+
+		// вивід даних
+		if (reduction) {
+			for (int i = 0; i < n; i++) {
+				cout << i + 1 << ". " << strings[i] << endl;
+			}
+		}
+		else {
+			throw 3;
+		}
+
 	}
-	else {
-		cout << "Неможливо скоротити рядки, щоб всі були унікальними.\n";
+	catch (int Exception) {
+		switch (Exception) {
+		case 1:
+			cout << "Кількість рядків повинна бути більше 0.\n";
+			break;
+		case 2:
+			cout << "Довжина рядків повинна бути більше 1.\n";
+			break;
+		case 3:
+			cout << "Неможливо скоротити рядки, щоб всі були унікальними.\n";
+		}
 	}
 
 	for (int i = 0; i < n; i++)
 		delete[] strings[i];
 	delete[] strings;
-	return 0;
+	system("pause");
 	return 0;
 }
 

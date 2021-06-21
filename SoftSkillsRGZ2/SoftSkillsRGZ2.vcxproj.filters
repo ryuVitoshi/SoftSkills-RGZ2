@@ -23,5 +23,8 @@
     <ClInclude Include="Viktor.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
+    <ClInclude Include="Vlad.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
